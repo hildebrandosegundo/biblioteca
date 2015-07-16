@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome_local: MyString
+  endereco_local: MyString
+  responsavel_local: MyString
+
+two:
+  nome_local: MyString
+  endereco_local: MyString
+  responsavel_local: MyString
