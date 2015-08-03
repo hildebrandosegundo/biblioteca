@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  get 'livros/index'
+
+  get 'livros/new'
+
+  get 'authors/index'
+
+  get 'authors/new'
+
+  get 'editoras/index'
+
+  get 'editoras/new'
+
+  post 'pessoas' => 'pessoas#create'
   resources :pessoas
   resources :home, :only => [:index]
   resources :instituicaos
