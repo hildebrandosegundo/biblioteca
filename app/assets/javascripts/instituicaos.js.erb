@@ -1,0 +1,18 @@
+$(document).on('click', '#button1idinstituicao', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+        $.ajax({
+            type: "POST",
+            url: "/instituicaos",
+            data: {
+                nome_local: $('#nameinput').val(),
+                endereco_local: $('#endinput').val(),
+                responsavel_local: $('#respinput').val()
+            },
+            success: function (data) {
+                console.log(data);
+                alert(data.message);
+            }
+        });
+
+});

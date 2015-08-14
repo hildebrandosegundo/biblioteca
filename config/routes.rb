@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'livros/index'
 
-  get 'livros/new'
+  post 'livros/new' => 'livros#create'
 
   get 'authors/index'
 
@@ -11,9 +11,24 @@ Rails.application.routes.draw do
 
   get 'editoras/new'
 
+  get 'home/index'
+
+  get 'minhabiblioteca/index'
+
+  get 'cadastro/index'
+
+  get 'contato/index'
+
+  get 'cadpesinst/index'
   post 'pessoas' => 'pessoas#create'
+  post 'instituicaos' => 'instituicaos#create'
   resources :pessoas
+  resources :livros
   resources :home, :only => [:index]
+  resources :contato, :only => [:index]
+  resources :cadastro, :only => [:index]
+  resources :cadpesinst, :only => [:index]
+  resources :minhabiblioteca, :only => [:index]
   resources :instituicaos
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

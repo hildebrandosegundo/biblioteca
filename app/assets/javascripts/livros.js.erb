@@ -1,0 +1,24 @@
+$(document).on('click', '#button1idlivro', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+        $.ajax({
+            type: "POST",
+            url: "/livros/new",
+            data: {
+                titulo: $('#tituloinput').val(),
+                ano: $('#anoinput').val(),
+                estante: $('#estanteinput').val(),
+                prateleira: $('#prateleirainput').val()
+            },
+            success: function (data) {
+                console.log(data);
+                alert(data.message);
+            }
+        });
+});
+    $('#livros').dataTable({
+        responsive: true,
+        sPaginationType: "full_numbers"
+    });
+
+

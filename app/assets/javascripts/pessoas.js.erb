@@ -1,19 +1,25 @@
 $(document).on('click', '#buttonCadastrar', function (e) {
     e.preventDefault();
     e.stopPropagation();
-    $.ajax({
-        type: "POST",
-        url: "/pessoas",
-        data: {nome: $('#inputnome').val(),
-               matricula: $('#inputmatricula').val(),
-               cpf: $('#inputCPF').val(),
-               login: $('#inputlogin').val(),
-               senha: $('#passwordinput').val(),
-               status: $('#radios option:selected').val()
-               },
-        success: function (data) {
-            console.log(data);
-            alert(data.message);
-        }
-    });
+    if ($('#passwordinput').val()!=$('#password2input').val()){
+      alert("A sua senha está diferente, por favor verifique sua senha!");
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: "/pessoas",
+            data: {
+                nome: $('#inputnome').val(),
+                matricula: $('#inputmatricula').val(),
+                cpf: $('#inputCPF').val(),
+                login: $('#inputlogin').val(),
+                senha: $('#passwordinput').val(),
+                status: $("#status option:selected").val()
+            },
+            success: function (data) {
+                console.log(data);
+                alert(data.message);
+            }
+        });
+    }
 });

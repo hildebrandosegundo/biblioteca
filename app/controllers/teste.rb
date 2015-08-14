@@ -33,6 +33,6 @@ class InstituicaosController < ApplicationController
 
 # Never trust parameters from the scary internet, only allow the white list through.
   def instituicao_params
-    params.permit(:nome_local, :endereco_local, :responsavel_local)
+    params.permit(:nome, :endereco, :responsavel)
   end
 end
