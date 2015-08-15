@@ -3,12 +3,14 @@ $(document).on('click', '#button1idlivro', function (e) {
     e.stopPropagation();
         $.ajax({
             type: "POST",
+            dataType: "json",
             url: "/livros/new",
             data: {
                 titulo: $('#tituloinput').val(),
                 ano: $('#anoinput').val(),
                 estante: $('#estanteinput').val(),
-                prateleira: $('#prateleirainput').val()
+                prateleira: $('#prateleirainput').val(),
+                editora: $('#editorainput').val().split("-")[0]
             },
             success: function (data) {
                 console.log(data);
@@ -16,7 +18,7 @@ $(document).on('click', '#button1idlivro', function (e) {
             }
         });
 });
-    $('#livros').dataTable({
+    $('#livros').DataTable({
         responsive: true,
         sPaginationType: "full_numbers"
     });

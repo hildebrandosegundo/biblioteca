@@ -1,4 +1,4 @@
 class Livro < ActiveRecord::Base
-  belongs_to :autor
+  belongs_to :author
   belongs_to :editora
 end

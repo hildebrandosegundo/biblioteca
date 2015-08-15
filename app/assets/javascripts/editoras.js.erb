@@ -1,5 +1,44 @@
+var table_editora, id_table = null;
 $(document).on('click', '#addeditora', function (e) {
     e.preventDefault();
     e.stopPropagation();
     $('#modaleditora').modal('show');
+});
+
+    table_editora = $('#tableeditoras').DataTable({
+    responsive: true,
+    sPaginationType: "full_numbers",
+    bProcessing: true,
+    bServerSide: true,
+    sAjaxSource: $('#tableeditoras').data('source')
+});
+
+$('#tableeditoras tbody').on( 'click', 'tr', function () {
+    if ( $(this).hasClass('selected') ) {
+        $(this).removeClass('selected');
+        $('#editorainput').val('');
+    }
+    else {
+        table_editora.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+        id_table = table_editora.row($(this)).data();
+        console.log(id_table[0]);
+        $('#editorainput').val(id_table[0]+'-'+id_table[1]);
+    }
+} );
+
+$(document).on('click','#salvaeditora', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    $.ajax({
+        type: "POST",
+        url: "/editoras/new",
+        data: {
+            nome_editora: $('#salvaeditorainput').val()
+        },
+        success: function (data) {
+            console.log(data);
+            alert(data.message);
+        }
+    });
 });

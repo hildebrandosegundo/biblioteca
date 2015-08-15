@@ -5,11 +5,9 @@ Rails.application.routes.draw do
 
   get 'authors/index'
 
-  get 'authors/new'
+  post 'authors/new' => 'authors#create'
 
   get 'editoras/index'
-
-  get 'editoras/new'
 
   get 'home/index'
 
@@ -20,10 +18,16 @@ Rails.application.routes.draw do
   get 'contato/index'
 
   get 'cadpesinst/index'
+
   post 'pessoas' => 'pessoas#create'
+
+  post 'editoras/new' => 'editoras#create'
+
   post 'instituicaos' => 'instituicaos#create'
   resources :pessoas
   resources :livros
+  resources :editoras
+  resources :authors
   resources :home, :only => [:index]
   resources :contato, :only => [:index]
   resources :cadastro, :only => [:index]

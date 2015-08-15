@@ -1,0 +1,29 @@
+$(document).on('click', '#addautor', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $('#modalauthor').modal('show');
+});
+
+$('#tableauthors').dataTable({
+    responsive: true,
+    sPaginationType: "full_numbers",
+    bProcessing: true,
+    bServerSide: true,
+    sAjaxSource: $('#tableauthors').data('source')
+});
+
+$(document).on('click','#salvaauthor', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    $.ajax({
+        type: "POST",
+        url: "/authors/new",
+        data: {
+            nome_author: $('#salvaauthorinput').val()
+        },
+        success: function (data) {
+            console.log(data);
+            alert(data.message);
+        }
+    });
+});
