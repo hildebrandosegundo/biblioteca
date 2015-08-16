@@ -38,6 +38,7 @@ $(document).on('click','#salvaeditora', function(e){
         },
         success: function (data) {
             console.log(data);
+            table_editora.ajax.reload();
             alert(data.message);
         }
     });
