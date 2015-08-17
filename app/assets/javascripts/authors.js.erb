@@ -31,7 +31,7 @@ $(document).on('click','#salvaauthor', function(e){
     e.stopPropagation();
     $.ajax({
         type: "POST",
-        url: "/authors/new",
+        url: "/authors/create",
         data: {
             nome_author: $('#salvaauthorinput').val()
         },

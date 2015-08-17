@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'authors/index'
 
-  post 'authors/new' => 'authors#create'
+  post 'authors/create' => 'authors#create'
 
   get 'editoras/index'
 
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   post 'pessoas' => 'pessoas#create'
 
-  post 'editoras/new' => 'editoras#create'
+  post 'editoras/create' => 'editoras#create'
 
   post 'instituicaos' => 'instituicaos#create'
   resources :pessoas

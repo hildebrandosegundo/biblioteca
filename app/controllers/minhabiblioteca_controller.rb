@@ -1,5 +1,5 @@
 class MinhabibliotecaController < ApplicationController
   def index
-    @livros = Livro.all
+    @livros = Livro.joins(:editora, :author)
   end
 end

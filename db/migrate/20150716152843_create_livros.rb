@@ -5,7 +5,7 @@ class CreateLivros < ActiveRecord::Migration
       t.string :ano
       t.string :estante
       t.string :prateleira
-      t.references :autor, index: true, foreign_key: true
+      t.references :author, index: true, foreign_key: true
       t.references :editora, index: true, foreign_key: true
 
       t.timestamps null: false

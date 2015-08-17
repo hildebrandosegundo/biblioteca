@@ -32,7 +32,7 @@ $(document).on('click','#salvaeditora', function(e){
     e.stopPropagation();
     $.ajax({
         type: "POST",
-        url: "/editoras/new",
+        url: "/editoras/create",
         data: {
             nome_editora: $('#salvaeditorainput').val()
         },
