@@ -30,16 +30,19 @@ $('#tableeditoras tbody').on( 'click', 'tr', function () {
 $(document).on('click','#salvaeditora', function(e){
     e.preventDefault();
     e.stopPropagation();
-    $.ajax({
-        type: "POST",
-        url: "/editoras/create",
-        data: {
-            nome_editora: $('#salvaeditorainput').val()
-        },
-        success: function (data) {
-            console.log(data);
-            table_editora.ajax.reload();
-            alert(data.message);
-        }
-    });
+    if ($('#salvaeditorainput').val()!="") {
+        $.ajax({
+            type: "POST",
+            url: "/editoras/new",
+            data: {
+                nome_editora: $('#salvaeditorainput').val()
+            },
+            success: function (data) {
+                console.log(data);
+                table_editora.ajax.reload();
+                alert(data.message);
+            }
+        });
+    }
+    else{ alert("Digite o nome da Editora!")}
 });

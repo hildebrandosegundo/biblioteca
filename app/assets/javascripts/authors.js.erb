@@ -29,16 +29,19 @@ $('#tableauthors tbody').on( 'click', 'tr', function () {
 $(document).on('click','#salvaauthor', function(e){
     e.preventDefault();
     e.stopPropagation();
-    $.ajax({
-        type: "POST",
-        url: "/authors/create",
-        data: {
-            nome_author: $('#salvaauthorinput').val()
-        },
-        success: function (data) {
-            console.log(data);
-            table_authors.ajax.reload();
-            alert(data.message);
-        }
-    });
+    if ($('#salvaauthorinput').val()!="") {
+        $.ajax({
+            type: "POST",
+            url: "/authors/new",
+            data: {
+                nome_author: $('#salvaauthorinput').val()
+            },
+            success: function (data) {
+                console.log(data);
+                table_authors.ajax.reload();
+                alert(data.message);
+            }
+        });
+    }
+    else{ alert("Digite o nome do autor!")}
 });

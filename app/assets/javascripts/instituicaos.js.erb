@@ -1,9 +1,38 @@
+var table_instituicao, id_table = null;
+$(document).on('click', '#addinstituicao', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $('#modalinstituicao').modal('show');
+});
+
+table_instituicao = $('#tableinstituicao').DataTable({
+    responsive: true,
+    sPaginationType: "full_numbers",
+    bProcessing: true,
+    bServerSide: true,
+    sAjaxSource: $('#tableinstituicao').data('source')
+});
+
+$('#tableinstituicao tbody').on( 'click', 'tr', function () {
+    if ( $(this).hasClass('selected') ) {
+        $(this).removeClass('selected');
+        $('#instituicaoinput').val('');
+    }
+    else {
+        table_instituicao.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+        id_table = table_instituicao.row($(this)).data();
+        console.log(id_table[0]);
+        $('#instituicaoinput').val(id_table[0]+'-'+id_table[1]);
+    }
+} );
+
 $(document).on('click', '#button1idinstituicao', function (e) {
     e.preventDefault();
     e.stopPropagation();
         $.ajax({
             type: "POST",
-            url: "/instituicaos",
+            url: "/instituicaos/new",
             data: {
                 nome_local: $('#nameinput').val(),
                 endereco_local: $('#endinput').val(),
@@ -12,6 +41,7 @@ $(document).on('click', '#button1idinstituicao', function (e) {
             success: function (data) {
                 console.log(data);
                 alert(data.message);
+                table_instituicao.ajax.reload();
             }
         });
 

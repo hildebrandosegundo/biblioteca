@@ -1,0 +1,17 @@
+$(document).on('click', '#buttonalocapeslivro', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $.ajax({
+            type: "POST",
+            url: "/locacaos/new",
+            data: {
+                pessoa_id:id_table_pes_li[0],
+                livro_id: id_table_livro[0]
+            },
+            success: function (data) {
+                console.log(data);
+                alert(data.message);
+            }
+        });
+
+});

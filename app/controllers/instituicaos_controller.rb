@@ -1,10 +1,13 @@
 class InstituicaosController < ApplicationController
   def index
-    @instuicaos = Instituicao.all
+    respond_to do |format|
+      format.html
+      format.json { render json: InstituicaosDatatable.new(view_context) }
+    end
   end
 
   def show
-
+    @instuicaos = Instituicao.find(params[:id])
   end
 
   def new

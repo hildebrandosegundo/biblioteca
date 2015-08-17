@@ -49,7 +49,7 @@ class AuthorsDatatable
   end
 
   def sort_column
-    columns = %w[id nome_author released_on price]
+    columns = %w[id nome_author]
     columns[params[:iSortCol_0].to_i]
   end
 

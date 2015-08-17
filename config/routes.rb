@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
   get 'livros/index'
 
+  post 'livros/edit' => 'livros#edit'
+
+  post 'livros/update' => 'livros#update'
+
+  post 'livros/destroy' => 'livros#destroy'
+
   post 'livros/new' => 'livros#create'
 
   get 'authors/index'
 
-  post 'authors/create' => 'authors#create'
+  post 'authors/new' => 'authors#create'
+
+  post 'instituicaos/new' => 'instituicaos#create'
+
+  get 'instituicaos/index'
 
   get 'editoras/index'
 
@@ -19,15 +29,21 @@ Rails.application.routes.draw do
 
   get 'cadpesinst/index'
 
-  post 'pessoas' => 'pessoas#create'
+  get 'locacaos/index'
 
-  post 'editoras/create' => 'editoras#create'
+  post 'locacaos/new' => 'locacaos#create'
 
-  post 'instituicaos' => 'instituicaos#create'
+  get 'pessoas/index'
+
+  post 'pessoas/new' => 'pessoas#create'
+
+  post 'editoras/new' => 'editoras#create'
+
   resources :pessoas
   resources :livros
   resources :editoras
   resources :authors
+  resources :locacaos
   resources :home, :only => [:index]
   resources :contato, :only => [:index]
   resources :cadastro, :only => [:index]

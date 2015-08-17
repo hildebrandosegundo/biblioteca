@@ -1,3 +1,31 @@
+var table_pessoa, id_table_pes_li = null;
+$(document).on('click', '#livros tbody tr #buttonalocuser', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    id_table_livro = table_livros.row($(this).parents('tr')).data();
+    console.log(id_table_livro[0]);
+    $('#modalpessoalivro').modal('show');
+});
+
+table_pessoa = $('#tablepessoaslivro').DataTable({
+    responsive: true,
+    sPaginationType: "full_numbers",
+    bProcessing: true,
+    bServerSide: true,
+    sAjaxSource: $('#tablepessoaslivro').data('source')
+});
+
+$('#tablepessoaslivro tbody').on( 'click', 'tr', function () {
+    if ( $(this).hasClass('selected') ) {
+        $(this).removeClass('selected');
+    }
+    else {
+        table_pessoa.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+        id_table_pes_li = table_pessoa.row($(this)).data();
+        console.log(id_table_pes_li[0]);
+    }
+} );
 $(document).on('click', '#buttonCadastrar', function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -7,7 +35,7 @@ $(document).on('click', '#buttonCadastrar', function (e) {
     else {
         $.ajax({
             type: "POST",
-            url: "/pessoas",
+            url: "/pessoas/new",
             data: {
                 nome: $('#inputnome').val(),
                 matricula: $('#inputmatricula').val(),
