@@ -2,7 +2,10 @@ class LivrosController < ApplicationController
   before_action :set_livro, only: [:edit, :show, :update, :destroy]
 
   def index
-    @livros = Livro.all
+    respond_to do |format|
+      format.html
+      format.json { render json: LivrosDatatable.new(view_context) }
+    end
   end
 
   def new

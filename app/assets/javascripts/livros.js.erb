@@ -21,7 +21,10 @@ $(document).on('click', '#button1idlivro', function (e) {
 });
 table_livros = $('#livros').DataTable({
     responsive: true,
-    sPaginationType: "full_numbers"
+    sPaginationType: "full_numbers",
+    bProcessing: true,
+    bServerSide: true,
+    sAjaxSource: $('#livros').data('source')
 });
 
 $(document).on('click','#livros tbody tr #buttoneditlivro', function(e){
@@ -44,24 +47,24 @@ $(document).on('click','#livros tbody tr #buttoneditlivro', function(e){
         }
     });
 });
-/*-----------------------Deleção incompleto (falta pergunta e atualizar tabela)------------------------------*/
 $(document).on('click','#livros tbody tr #buttonexcluirlivro', function(e){
     e.preventDefault();
     e.stopPropagation();
     id_table_livro = table_livros.row($(this).parents('tr')).data();
-
-    $.ajax({
-        type: "POST",
-        url: "/livros/destroy",
-        data: {
-            id: id_table_livro[0]
-        },
-        success: function (data) {
-            alert(data.message);
-        }
-    });
+    if (confirm('Você pretente excluir este item?')) {
+        $.ajax({
+            type: "POST",
+            url: "/livros/destroy",
+            data: {
+                id: id_table_livro[0]
+            },
+            success: function (data) {
+                alert(data.message);
+                table_livros.ajax.reload();
+            }
+        });
+    }
 });
-/*-----------------------Update incompleto (falta atualizar tabela)-----------------------------------------*/
 $(document).on('click', '#button1updatelivro', function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -80,6 +83,7 @@ $(document).on('click', '#button1updatelivro', function (e) {
         success: function (data) {
             console.log(data);
             alert(data.message);
+            table_livros.ajax.reload();
         }
     });
 });
