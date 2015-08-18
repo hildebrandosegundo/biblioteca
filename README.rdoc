@@ -1,28 +1,23 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+O sistema tem por finalidade, gerenciar uma biblioteca,
+com cadastro de usuários, livros, instituições e locação de
+livros para os usuários.
 
-Things you may want to cover:
+Este sistema tem de forma didatica aplicar os principais
+conceitos de uma aplicação Ruby on Rails:
 
-* Ruby version
+@ Conceito de MVC
 
-* System dependencies
+@ Conceito de CRUD
 
-* Configuration
+@ Ideia de Front end
 
-* Database creation
+@ Ideia de back end
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+@ Relacionamentos de Banco de dados
 
 * ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Desenvolvido por Hildebrando Segundo e Pablo Ribeiro
