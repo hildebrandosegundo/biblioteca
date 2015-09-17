@@ -9,6 +9,7 @@
       <!-- Button (Double) -->
       <div class="form-group">
         <label class="col-md-4 control-label" for="button1id"></label>
+
         <div class="col-md-8">
           <button id="button1updatelivro" name="button1id" class="btn btn-success">Atualizar Dados</button>
           <button id="button2idlivro" name="button2id" class="btn btn-danger">Apagar Tudo</button>
@@ -47,22 +48,26 @@
     <form class="form-horizontal">
       <fieldset>
         <div class="col-md-12">
-          <table id="livros" cellspacing="0" width="100%" class="table table-striped table-bordered display responsive no-wrap" data-source="<%= livros_url(format: "json") %>">
-            <thead>
-            <tr>
-              <th>ID</th>
-              <th>Titulo</th>
-              <th>Ano</th>
-              <th>Prateleira</th>
-              <th>Estante</th>
-              <th>Autor</th>
-              <th>Editora</th>
-              <th>Opção</th>
-            </tr>
-            </thead>
-            <tbody>
+          <% if policy(@livros).index? %>
+              <table id="livros" cellspacing="0" width="100%" class="table table-striped table-bordered display responsive no-wrap" data-source="<%= livros_listaAdmin_url(format: "json") %>">
+          <% else %>
+              <table id="livros" cellspacing="0" width="100%" class="table table-striped table-bordered display responsive no-wrap" data-source="<%= livros_listaNormalUser_url(format: "json") %>">
+          <% end %>
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Ano</th>
+            <th>Prateleira</th>
+            <th>Estante</th>
+            <th>Autor</th>
+            <th>Editora</th>
+            <th>Opção</th>
+          </tr>
+          </thead>
+          <tbody>
 
-            </tbody>
+          </tbody>
           </table>
         </div>
       </fieldset>

@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150815135544) do
+ActiveRecord::Schema.define(version: 20150903142256) do
 
-  create_table "autors", force: :cascade do |t|
-    t.string   "nome_autor"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "authors", force: :cascade do |t|
+    t.string   "nome_author"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "editoras", force: :cascade do |t|
@@ -36,15 +36,15 @@ ActiveRecord::Schema.define(version: 20150815135544) do
   create_table "livros", force: :cascade do |t|
     t.string   "titulo"
     t.string   "ano"
-    t.string   "estante",    limit: 20
-    t.string   "prateleira", limit: 20
-    t.integer  "autor_id"
+    t.string   "estante"
+    t.string   "prateleira"
+    t.integer  "author_id"
     t.integer  "editora_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "livros", ["autor_id"], name: "index_livros_on_autor_id"
+  add_index "livros", ["author_id"], name: "index_livros_on_author_id"
   add_index "livros", ["editora_id"], name: "index_livros_on_editora_id"
 
   create_table "locacaos", force: :cascade do |t|
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150815135544) do
     t.integer  "pessoa_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "status"
   end
 
   add_index "locacaos", ["livro_id"], name: "index_locacaos_on_livro_id"
@@ -61,14 +62,45 @@ ActiveRecord::Schema.define(version: 20150815135544) do
     t.string   "nome"
     t.string   "matricula"
     t.string   "cpf"
-    t.string   "login"
-    t.string   "senha"
     t.string   "status"
     t.integer  "instituicao_id"
+    t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
   add_index "pessoas", ["instituicao_id"], name: "index_pessoas_on_instituicao_id"
+  add_index "pessoas", ["user_id"], name: "index_pessoas_on_user_id"
+
+  create_table "reservas", force: :cascade do |t|
+    t.integer  "pessoas_id"
+    t.integer  "livros_id"
+    t.string   "status"
+    t.date     "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reservas", ["livros_id"], name: "index_reservas_on_livros_id"
+  add_index "reservas", ["pessoas_id"], name: "index_reservas_on_pessoas_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "role",                   default: 0
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

@@ -32,14 +32,14 @@ $(document).on('click','#salvaauthor', function(e){
     if ($('#salvaauthorinput').val()!="") {
         $.ajax({
             type: "POST",
-            url: "/authors/new",
+            url: "/authors/criar",
             data: {
                 nome_author: $('#salvaauthorinput').val()
             },
             success: function (data) {
                 console.log(data);
-                table_authors.ajax.reload();
                 alert(data.message);
+                table_authors.ajax.reload();
             }
         });
     }

@@ -1,4 +1,4 @@
-class LivrosDatatable
+class LivrosDatatableAdmin
   delegate :params, :h, :link_to, :number_to_currency, to: :@view
 
   def initialize(view)

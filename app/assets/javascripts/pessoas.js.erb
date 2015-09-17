@@ -35,14 +35,13 @@ $(document).on('click', '#buttonCadastrar', function (e) {
     else {
         $.ajax({
             type: "POST",
-            url: "/pessoas/new",
+            url: "/pessoas",
             data: {
                 nome: $('#inputnome').val(),
                 matricula: $('#inputmatricula').val(),
                 cpf: $('#inputCPF').val(),
-                login: $('#inputlogin').val(),
-                senha: $('#passwordinput').val(),
-                status: $("#status option:selected").val()
+                status: $("#status option:selected").val(),
+                instituicao_id:  $('#instituicaoinput').val().split("-")[0]
             },
             success: function (data) {
                 console.log(data);

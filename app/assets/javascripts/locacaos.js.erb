@@ -3,7 +3,7 @@ $(document).on('click', '#buttonalocapeslivro', function (e) {
     e.stopPropagation();
     $.ajax({
             type: "POST",
-            url: "/locacaos/new",
+            url: "/locacaos",
             data: {
                 pessoa_id:id_table_pes_li[0],
                 livro_id: id_table_livro[0]

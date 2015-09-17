@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root to: 'home#index'
   get 'livros/index'
 
+  get 'livros/listaAdmin'
+  get 'livros/listaNormalUser'
   post 'livros/edit' => 'livros#edit'
 
   post 'livros/update' => 'livros#update'
 
-  post 'livros/destroy' => 'livros#destroy'
+  delete 'livros/destroy' => 'livros#destroy'
 
-  post 'livros/new' => 'livros#create'
+  post 'livros' => 'livros#create'
 
   get 'authors/index'
 
-  post 'authors/new' => 'authors#create'
+  post 'authors' => 'authors#create'
 
-  post 'instituicaos/new' => 'instituicaos#create'
+  post 'instituicaos' => 'instituicaos#create'
 
   get 'instituicaos/index'
 
@@ -31,13 +35,13 @@ Rails.application.routes.draw do
 
   get 'locacaos/index'
 
-  post 'locacaos/new' => 'locacaos#create'
+  post 'locacaos' => 'locacaos#create'
 
   get 'pessoas/index'
 
-  post 'pessoas/new' => 'pessoas#create'
+  post 'pessoas' => 'pessoas#create'
 
-  post 'editoras/new' => 'editoras#create'
+  post 'editoras' => 'editoras#create'
 
   resources :pessoas
   resources :livros
@@ -50,6 +54,7 @@ Rails.application.routes.draw do
   resources :cadpesinst, :only => [:index]
   resources :minhabiblioteca, :only => [:index]
   resources :instituicaos
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

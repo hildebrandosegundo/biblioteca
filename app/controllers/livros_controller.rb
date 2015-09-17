@@ -2,14 +2,27 @@ class LivrosController < ApplicationController
   before_action :set_livro, only: [:edit, :show, :update, :destroy]
 
   def index
+    @livros = Livro.all
+  end
+
+  def listaAdmin
     respond_to do |format|
       format.html
-      format.json { render json: LivrosDatatable.new(view_context) }
+      format.json { render json: LivrosDatatableAdmin.new(view_context) }
     end
+  end
+
+  def listaNormalUser
+    respond_to do |format|
+      format.html
+      format.json { render json: LivrosDatatableNormalUser.new(view_context) }
+    end
+
   end
 
   def new
     @livros = Livro.new
+    authorize @livros
   end
 
   def create
@@ -43,13 +56,15 @@ class LivrosController < ApplicationController
       end
     end
   end
+
   def destroy
     respond_to do |format|
       @livros.destroy
-        data = {:message => "Exclusão realizada com sucesso!"}
-        format.json { render :json => data, :status => :ok }
+      data = {:message => "Exclusão realizada com sucesso!"}
+      format.json { render :json => data, :status => :ok }
     end
   end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_livro

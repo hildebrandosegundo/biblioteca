@@ -4,7 +4,7 @@
   <title>Biblioteca</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -19,26 +19,42 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/home"><span>Biblioteca Facil</span></a>
+      <% if user_signed_in? %>
+      <a class="navbar-brand" href="#"><span class="label label-info"><%= current_user.email %></span></a>
+      <% end %>
     </div>
     <div class="collapse navbar-collapse" id="navbar-ex-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a href="/home">Inicio</a>
         </li>
+
         <li>
           <a href="/cadastro">Cadastro</a>
         </li>
+
         <li>
           <a href="/minhabiblioteca">Minha Biblioteca</a>
         </li>
         <li>
           <a href="/contato">Contato</a>
         </li>
+        <% if user_signed_in? %>
+
+            <li>
+              <span class='label label-danger'><%= link_to "Sair", destroy_user_session_path, :method => :delete %></span>
+            </li>
+        <% else %>
+            <li>
+              <span class='label label-success'><%= link_to "Entrar", new_user_session_path %></span>
+            </li>
+        <% end %>
+
       </ul>
     </div>
   </div>
 </div>
-
+<p id="notice"><%= notice %></p>
 <%= yield %>
 
 </body>

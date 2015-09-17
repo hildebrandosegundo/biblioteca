@@ -32,7 +32,7 @@ $(document).on('click', '#button1idinstituicao', function (e) {
     e.stopPropagation();
         $.ajax({
             type: "POST",
-            url: "/instituicaos/new",
+            url: "/instituicaos",
             data: {
                 nome_local: $('#nameinput').val(),
                 endereco_local: $('#endinput').val(),

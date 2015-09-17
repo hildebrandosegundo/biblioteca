@@ -32,7 +32,7 @@ class PessoasController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def pessoa_params
-    params.permit(:nome, :matricula, :cpf, :login, :senha, :status)
+    params.permit(:nome, :matricula, :cpf, :status, :instituicao_id)
   end
 
 end

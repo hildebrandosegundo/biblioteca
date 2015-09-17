@@ -33,14 +33,14 @@ $(document).on('click','#salvaeditora', function(e){
     if ($('#salvaeditorainput').val()!="") {
         $.ajax({
             type: "POST",
-            url: "/editoras/new",
+            url: "/editoras",
             data: {
                 nome_editora: $('#salvaeditorainput').val()
             },
             success: function (data) {
                 console.log(data);
-                table_editora.ajax.reload();
                 alert(data.message);
+                table_editora.ajax.reload();
             }
         });
     }

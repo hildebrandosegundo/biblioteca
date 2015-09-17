@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pessoas_id: 
+  livros_id: 
+  status: MyString
+  data: 2015-09-02
+
+two:
+  pessoas_id: 
+  livros_id: 
+  status: MyString
+  data: 2015-09-02

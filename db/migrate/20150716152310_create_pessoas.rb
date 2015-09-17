@@ -4,11 +4,9 @@ class CreatePessoas < ActiveRecord::Migration
       t.string :nome
       t.string :matricula
       t.string :cpf
-      t.string :login
-      t.string :senha
       t.string :status
       t.references :instituicao, index: true, foreign_key: true
-
+      t.references :user, index: true, foreign_key: true
       t.timestamps null: false
     end
   end
