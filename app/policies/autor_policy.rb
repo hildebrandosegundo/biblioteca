@@ -1,8 +1,8 @@
-class UserPolicy < ApplicationPolicy
-  def create?
+class AutorPolicy < ApplicationPolicy
+  def new?
     user.admin?
   end
-  def index?
+  def create?
     user.admin?
   end
   class Scope < Scope

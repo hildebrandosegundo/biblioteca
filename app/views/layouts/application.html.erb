@@ -28,21 +28,23 @@
         <li>
           <a href="/home">Inicio</a>
         </li>
-
+        <% if user_signed_in?
+            if  current_user.role=="admin" %>
         <li>
           <a href="/cadastro">Cadastro</a>
         </li>
-
+        <% end %>
         <li>
           <a href="/minhabiblioteca">Minha Biblioteca</a>
         </li>
+        <% end %>
         <li>
           <a href="/contato">Contato</a>
         </li>
         <% if user_signed_in? %>
 
             <li>
-              <span class='label label-danger'><%= link_to "Sair", destroy_user_session_path, :method => :delete %></span>
+             <span class='label label-danger'><%= link_to "Sair", destroy_user_session_path, :method => :delete %></span>
             </li>
         <% else %>
             <li>
@@ -54,7 +56,10 @@
     </div>
   </div>
 </div>
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div id="diverro" class="alert alert-warning" role="alert"><p align="center" id="notice"><%= notice %></p></div>
+</div>
+
 <%= yield %>
 
 </body>

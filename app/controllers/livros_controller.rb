@@ -2,7 +2,7 @@ class LivrosController < ApplicationController
   before_action :set_livro, only: [:edit, :show, :update, :destroy]
 
   def index
-    @livros = Livro.all
+
   end
 
   def listaAdmin

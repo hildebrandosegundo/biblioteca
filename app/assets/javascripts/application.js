@@ -50,3 +50,22 @@ $(function(){
 $(document).on('click', '.nav li a', function (e) {
     $(this).parent().addClass('active');
 });
+$(document).ready(function() {
+    $('#notice').html(function () {
+        if ($(this).html() == "") {
+            $('#diverro').hide();
+        }
+        else {
+            if ($(this).html()=="Logado com sucesso."||$(this).html()=="Saiu com sucesso."||$(this).html()=="Bem-vindo! Você se registrou com sucesso."){
+                $("#diverro").removeClass("alert alert-warning").addClass("alert alert-success");
+            }
+            else{
+                $("#diverro").removeClass("alert alert-success").addClass("alert alert-warning");
+            }
+            setTimeout(function(){
+                $('#diverro').fadeOut();
+            }, 3000)
+
+        }
+    });
+});

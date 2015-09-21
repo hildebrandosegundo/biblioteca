@@ -1,7 +1,4 @@
-class UserPolicy < ApplicationPolicy
-  def create?
-    user.admin?
-  end
+class CadastroPolicy < ApplicationPolicy
   def index?
     user.admin?
   end

@@ -12,10 +12,12 @@ class InstituicaosController < ApplicationController
 
   def new
     @instuicaos = Instituicao.new
+     authorize @instuicaos
   end
 
   def create
     @instuicaos = Instituicao.new(instituicao_params)
+     authorize @instuicaos
     respond_to do |format|
       if @instuicaos.save
         #format.html { redirect_to @instuicaos, notice: 'Post was successfully created.' }

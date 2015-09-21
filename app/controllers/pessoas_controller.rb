@@ -10,9 +10,11 @@ class PessoasController < ApplicationController
   end
   def new
     @pessoas = Pessoa.new
+    authorize @pessoas
   end
   def create
     @pessoas = Pessoa.new(pessoa_params)
+    authorize @pessoas
     respond_to do |format|
       if @pessoas.save
         #format.html { redirect_to @pessoas, notice: 'Post was successfully created.' }
@@ -20,7 +22,7 @@ class PessoasController < ApplicationController
         format.json{render :json => data, :status => :ok}
       else
         #format.html { render :new }
-        format.json { render :json => "erro ao cadastrar!" }
+        format.json { render :json => "erro ao cadastrar ou !" }
       end
     end
   end

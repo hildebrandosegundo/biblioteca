@@ -42,7 +42,7 @@ class LivrosDatatableNormalUser
     livros = Livro.joins(:editora, :author).order("#{sort_column} #{sort_direction}")
     livros = livros.page(page).per_page(per_page)
     if params[:sSearch].present?
-      livros = livros.where("nome like :search or cpf like :search or matricula like :search", search: "%#{params[:sSearch]}%")
+      livros = livros.where("livros.titulo like :search or livros.ano like :search or livros.id like :search or livros.prateleira like :search or livros.estante like :search", search: "%#{params[:sSearch]}%")
     end
     livros
   end

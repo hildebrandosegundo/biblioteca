@@ -45,8 +45,10 @@ $(document).on('click', '#buttonCadastrar', function (e) {
             },
             success: function (data) {
                 console.log(data);
+                $('#buttonCadastrar').attr('disabled', 'disabled');
                 alert(data.message);
             }
         });
+
     }
 });

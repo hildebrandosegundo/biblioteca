@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  livro_id: 
+  reservdos: 1
+  locados: 1
+
+two:
+  livro_id: 
+  reservdos: 1
+  locados: 1

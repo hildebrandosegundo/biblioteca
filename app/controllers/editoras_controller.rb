@@ -10,9 +10,11 @@ class EditorasController < ApplicationController
   end
   def new
     @editoras = Editora.new
+    authorize @editoras
   end
   def create
     @editoras = Editora.new(editora_params)
+    authorize @editoras
     respond_to do |format|
       if @editoras.save
         #format.html { redirect_to @editoras, notice: 'Post was successfully created.' }

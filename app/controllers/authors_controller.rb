@@ -7,12 +7,15 @@ class AuthorsController < ApplicationController
   end
   def show
     @autors = Author.find(params[:id])
+
   end
   def new
     @autors = Author.new
+    authorize @autors
   end
   def create
     @autors = Author.new(author_params)
+    authorize @autors
     respond_to do |format|
       if @autors.save
         #format.html { redirect_to @editoras, notice: 'Post was successfully created.' }

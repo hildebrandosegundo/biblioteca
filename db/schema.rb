@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903142256) do
+ActiveRecord::Schema.define(version: 20150917213710) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "nome_author"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20150903142256) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "estoques", force: :cascade do |t|
+    t.integer  "livro_id"
+    t.integer  "reservdos"
+    t.integer  "locados"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "estoques", ["livro_id"], name: "index_estoques_on_livro_id"
 
   create_table "instituicaos", force: :cascade do |t|
     t.string   "nome_local",        limit: 80
